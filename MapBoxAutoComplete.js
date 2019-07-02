@@ -12,7 +12,6 @@ import PropTypes from 'prop-types';
             userInputValue: props.value,
             publicKey: props.publicKey,
             resetSearch: props.resetSearch ? props.resetSearch : false,
-            // ready: false,
         }
     }
 
@@ -23,6 +22,7 @@ import PropTypes from 'prop-types';
         
     if(this.props.country) {
         path = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + value + '.json?access_token=' + this.state.publicKey + '&country=' + this.props.country;
+        
       }
     this.getResult(path, header);
     }
@@ -102,9 +102,6 @@ import PropTypes from 'prop-types';
           this.clearQueryResults();
           return;
         }
-        // if (this.props.shouldFetchSuggestions) {
-        //   this.debouncedFetchPredictions();
-        // }
         this.updateQuery(value);
       };
 
@@ -128,14 +125,11 @@ import PropTypes from 'prop-types';
           role: 'combobox',
           'aria-autocomplete': 'list',
           'aria-expanded': this.getIsExpanded(),
-        //   disabled: !this.state.ready,
         };
     
         return {
           ...defaultInputProps,
           ...options,
-        //   onKeyDown: compose(this.handleInputKeyDown, options.onKeyDown),
-        //   onBlur: compose(this.handleInputOnBlur, options.onBlur),
           value: this.props.value,
           onChange: event => {
             this.handleInputChange(event);
@@ -152,7 +146,7 @@ import PropTypes from 'prop-types';
             getInputProps: this.getInputProps,
             queryResults: this.state.queryResults,
             error: this.state.error,
-            errorMessage: this.state.errorMsg
+            onSuggestionSelect: this.onSuggestionSelect
         });
     }
   }
@@ -161,21 +155,14 @@ import PropTypes from 'prop-types';
   MapBoxAC.defaultProps = {
     inputId: null,
     inputOnFocus: null,
-    // inputOnBlur: null,
-    // inputOnClick: null
   };
   
   MapBoxAC.propTypes = {
     onChange: PropTypes.func.isRequired,
     value: PropTypes.string.isRequired,
     children: PropTypes.func.isRequired,
-    // inputId: PropTypes.string,
-    // inputOnFocus: PropTypes.func,
-    // inputOnBlur: PropTypes.func,
-    // inputOnClick: PropTypes.func,
-    // inputClass: PropTypes.string,
     publicKey: PropTypes.string.isRequired,
-    // placeholder: PropTypes.string,
+    placeholder: PropTypes.string,
     onSuggestionSelect: PropTypes.func.isRequired,
     country: PropTypes.string,
     userInputValue: PropTypes.string,
