@@ -19,7 +19,7 @@ class TestComponent extends Component {
         return (
         <div>
             <MapBoxAC 
-                publicKey='pk.eyJ1IjoibGluc3NlbjIxIiwiYSI6ImNqeGtlcmJpZzIyeWkzb3A2OTZsZzF4ZWEifQ.F14e7oxmLNmrKc135JAGPQ'
+                publicKey='YOUR_API_KEY'
                 value={this.state.address}
                 onChange={this.handleChange}
                 inputOnClick={this.onClick}
