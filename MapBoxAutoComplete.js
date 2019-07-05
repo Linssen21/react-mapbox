@@ -21,7 +21,7 @@ import PropTypes from 'prop-types';
         let path = `https://api.mapbox.com/geocoding/v5/mapbox.places/${value}.json?access_token=${publicKey}`;
         
     if(this.props.country) {
-        path = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + value + '.json?access_token=' + this.state.publicKey + '&country=' + this.props.country;
+      path = `https://api.mapbox.com/geocoding/v5/mapbox.places/${value}.json?access_token=${publicKey}&country=${this.props.country}`;
         
       }
     this.getResult(path, header);
