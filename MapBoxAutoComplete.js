@@ -1,6 +1,8 @@
+/**
+ * Created By: Linssen
+ */
 import React from 'react';
 import PropTypes from 'prop-types';
-
 
   class MapBoxAC extends React.Component{
     constructor(props){
